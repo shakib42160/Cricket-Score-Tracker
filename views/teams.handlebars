@@ -1,0 +1,32 @@
+{{#extend 'main'}}
+
+{{#content 'body'}}
+    <div class="container">
+        <h1>Manage Teams</h1>
+
+        <!-- Form to create a new team -->
+        <form action="/teams" method="POST" class="form">
+            <input type="text" name="name" placeholder="Team Name" required>
+            <input type="text" name="short_name" placeholder="Short Name" required>
+            <input type="text" name="logo_url" placeholder="Logo URL (optional)">
+            <button type="submit">Create Team</button>
+        </form>
+
+        <!-- List of existing teams -->
+        <h2>Existing Teams</h2>
+        <ul>
+            {{#each teams}}
+                <li>
+                    {{this.name}} ({{this.short_name}})
+                    <form action="/teams/{{this.id}}?_method=DELETE" method="POST" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </li>
+            {{/each}}
+        </ul>
+
+        <a href="/dashboard">← Back to Dashboard</a>
+    </div>
+{{/content}}
+
+{{/extend}}
