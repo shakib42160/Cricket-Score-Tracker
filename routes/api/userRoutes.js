@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const { User } = require('../../models');  // <<< CORRECTED
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 // Register Route
 router.get('/register', (req, res) => {
